@@ -18,6 +18,12 @@ npm run dev
 
 Then open the URL printed by Vite.
 
+## Portable Hermes setup
+
+This repository includes safe, project-local Hermes context in `AGENTS.md` and `.hermes/`. It contains the project skill and reusable workflow preferences without copying API keys, OAuth tokens, session history, or private Hermes databases.
+
+See `docs/hermes-portable-setup.md` for setup instructions on another machine.
+
 ## Build verification
 
 ```bash
