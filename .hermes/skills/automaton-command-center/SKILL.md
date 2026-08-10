@@ -32,6 +32,14 @@ Google Drive, uploading, video processing, rendering, publishing, and remote job
 
 ## Video workflow
 
+For video work, load all three project skills together:
+
+- `automaton-command-center` for the dashboard and integration boundary.
+- `video-use` for conversation-driven editing, transcription, cuts, subtitles, rendering, and verification.
+- `branded-social-video` for OzArmour and BeeKeepingGear routing, brand cards, logos, audio treatment, and final delivery.
+
+The bundled `video-use` skill is set up for this project's current workflow: ElevenLabs is not required and must not block setup, footage inventory, visual review, overlays, editing, subtitles, or rendering. Use the local ASR fallback when word-level subtitles are needed, or state the limitation honestly if it is unavailable.
+
 The command center orchestrates the existing video workflow; it does not replace the editor. The workflow is:
 
 1. Inspect source footage.

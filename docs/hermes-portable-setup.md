@@ -94,29 +94,71 @@ npm run build
 npm run lint
 ```
 
-## 4. Install the project skill into Hermes
+## 4. Install the project and video skills into Hermes
 
-The repository keeps the skill locally so it travels with the project. Copy it into the active Hermes skill directory:
+The repository includes the complete helper bundles for the three skills used in this workflow:
+
+- `automaton-command-center` — dashboard and integration rules.
+- `video-use` — editing, subtitles, rendering, and verification helpers.
+- `branded-social-video` — OzArmour and BeeKeepingGear branded video production.
+
+Copy the complete directories, not just `SKILL.md`, because `video-use` and `branded-social-video` use neighboring helper scripts and references:
 
 ```bash
 mkdir -p "$HOME/.hermes/skills/automaton-command-center"
-cp .hermes/skills/automaton-command-center/SKILL.md "$HOME/.hermes/skills/automaton-command-center/SKILL.md"
+mkdir -p "$HOME/.hermes/skills/video-use"
+mkdir -p "$HOME/.hermes/skills/branded-social-video"
+cp -R .hermes/skills/automaton-command-center/. "$HOME/.hermes/skills/automaton-command-center/"
+cp -R .hermes/skills/video-use/. "$HOME/.hermes/skills/video-use/"
+cp -R .hermes/skills/branded-social-video/. "$HOME/.hermes/skills/branded-social-video/"
+hermes skills list
 ```
+
+### Video setup without ElevenLabs
+
+ElevenLabs is intentionally not required for this project. Do not ask for an ElevenLabs key during setup and do not block video editing on it.
+
+The bundled video setup is documented in `.hermes/skills/video-use/install.md`. Verify the local tools first:
+
+```bash
+ffmpeg -version
+ffprobe -version
+python .hermes/skills/video-use/helpers/timeline_view.py --help
+python -m py_compile .hermes/skills/video-use/helpers/*.py
+```
+
+Install the core Python helpers when needed:
+
+```bash
+python -m pip install requests librosa matplotlib pillow numpy
+```
+
+For word-level subtitles without ElevenLabs, install the local fallback only when subtitle work is requested:
+
+```bash
+python -m pip install --user faster-whisper
+```
+
+If local ASR is unavailable, report that limitation instead of fabricating subtitles. Do not run a paid transcription test during setup.
 
 Ask Hermes to rescan skills, or start a new session:
 
 ```bash
 hermes skills list
-hermes -s automaton-command-center
+hermes -s video-use -s branded-social-video -s automaton-command-center
 ```
 
-If the skill does not appear immediately, start a new Hermes session or use `/reload-skills` inside the session.
+If the skills do not appear immediately, start a new Hermes session or use `/reload-skills` inside the session.
 
 ### Windows PowerShell version
 
 ```powershell
 New-Item -ItemType Directory -Force "$HOME\.hermes\skills\automaton-command-center"
-Copy-Item ".hermes\skills\automaton-command-center\SKILL.md" "$HOME\.hermes\skills\automaton-command-center\SKILL.md"
+New-Item -ItemType Directory -Force "$HOME\.hermes\skills\video-use"
+New-Item -ItemType Directory -Force "$HOME\.hermes\skills\branded-social-video"
+Copy-Item ".hermes\skills\automaton-command-center\*" "$HOME\.hermes\skills\automaton-command-center" -Recurse -Force
+Copy-Item ".hermes\skills\video-use\*" "$HOME\.hermes\skills\video-use" -Recurse -Force
+Copy-Item ".hermes\skills\branded-social-video\*" "$HOME\.hermes\skills\branded-social-video" -Recurse -Force
 hermes skills list
 ```
 

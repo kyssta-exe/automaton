@@ -45,13 +45,26 @@ cd automaton
 npm install
 ```
 
-Install this project's skill into the active Hermes profile:
+Install all of this project's skills into the active Hermes profile. The complete directories are copied because the video skills include helper scripts and references:
 
 ```bash
 mkdir -p "$HOME/.hermes/skills/automaton-command-center"
-cp .hermes/skills/automaton-command-center/SKILL.md "$HOME/.hermes/skills/automaton-command-center/SKILL.md"
+mkdir -p "$HOME/.hermes/skills/video-use"
+mkdir -p "$HOME/.hermes/skills/branded-social-video"
+cp -R .hermes/skills/automaton-command-center/. "$HOME/.hermes/skills/automaton-command-center/"
+cp -R .hermes/skills/video-use/. "$HOME/.hermes/skills/video-use/"
+cp -R .hermes/skills/branded-social-video/. "$HOME/.hermes/skills/branded-social-video/"
 hermes skills list
-hermes -s automaton-command-center
+hermes -s video-use -s branded-social-video -s automaton-command-center
+```
+
+Video editing is intentionally set up without ElevenLabs. It should not ask for an ElevenLabs key or block editing on it. Use the local ASR fallback when subtitles are needed:
+
+```bash
+ffmpeg -version
+ffprobe -version
+python -m pip install requests librosa matplotlib pillow numpy
+python -m pip install --user faster-whisper  # only when local subtitles are needed
 ```
 
 Start Hermes from the repository directory so it can read `AGENTS.md` and `.hermes/project-memory.md`. For Windows PowerShell commands and the full explanation, read `docs/hermes-portable-setup.md`.

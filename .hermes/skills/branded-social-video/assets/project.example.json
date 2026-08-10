@@ -1,0 +1,62 @@
+{
+  "_comment": "Single source of truth. Paths are relative to the folder holding the footage.",
+  "output": { "width": 1080, "height": 1920, "fps": 30, "crf": 19, "preset": "medium" },
+  "grade": "eq=contrast=1.03:gamma=1.03:saturation=1.04",
+  "brand": {
+    "surface": [246, 238, 220],
+    "ink": [12, 12, 14],
+    "logo": "logo.png",
+    "logo_is_dark_ink": true
+  },
+  "fonts": {
+    "bold": "C:/Windows/Fonts/segoeuib.ttf",
+    "semibold": "C:/Windows/Fonts/seguisb.ttf",
+    "regular": "C:/Windows/Fonts/segoeui.ttf"
+  },
+  "text": {
+    "block_bottom": 1590,
+    "side_margin": 75,
+    "head_size": 50,
+    "sup_size": 50,
+    "title_head_size": 50,
+    "title_sup_size": 50,
+    "uppercase_headlines": true,
+    "single_style_cards": true,
+    "card_size": 50,
+    "title_screen": true
+  },
+  "scrim": { "start": 1090, "max_alpha": 232, "curve": 1.45 },
+  "watermark": { "width": 205, "right_margin": 46, "top": 88 },
+  "endcard": { "seconds": 3.0, "tagline": "your-website.example" },
+  "audio": {
+    "mode": "ambience_loop",
+    "donor": { "file": "video 1.mp4", "start": 39.0, "length": 11.0 },
+    "lufs": -18.0,
+    "true_peak": -1.5,
+    "highpass": 90,
+    "loop_xfade": 1.2,
+    "tail_fade": 1.8
+  },
+  "sources": {
+    "video1": "video 1.mp4",
+    "video2": "video 2.mp4"
+  },
+  "title": { "text": "How to work your hive" },
+  "cards": [
+    { "text": "Pick a warm, sunny day. Mid-morning is ideal, when most foragers are out working" },
+    { "text": "Light your smoker FIRST. A few gentle puffs of cool white smoke at the entrance, then wait a minute before opening up" },
+    { "text": "Move slowly and deliberately. No sudden movements, no bumping the boxes" },
+    { "text": "Work from the side or back of the hive. Never block their flight path" },
+    { "text": "Keep it short and purposeful. Know what you're checking before you lift the lid" },
+    { "text": "Stay relaxed. Steady hands make for a settled colony" }
+  ],
+  "ranges": [
+    { "source": "video1", "start": 43.0, "end": 46.0, "card": "title", "reason": "Opening title screen duration." },
+    { "source": "video1", "start": 18.0, "end": 24.5, "card": 0, "reason": "Full sun, subject visibly active." },
+    { "source": "video1", "start": 1.6, "end": 8.8, "card": 1, "reason": "Literal smoker action." },
+    { "source": "video2", "start": 5.4, "end": 12.4, "card": 2, "reason": "Slow deliberate handling." },
+    { "source": "video2", "start": 17.6, "end": 24.4, "card": 3, "reason": "Clean side profile." },
+    { "source": "video1", "start": 28.0, "end": 34.0, "card": 4, "reason": "Inspection beat." },
+    { "source": "video2", "start": 25.8, "end": 30.9, "card": 5, "reason": "Calm closer." }
+  ]
+}

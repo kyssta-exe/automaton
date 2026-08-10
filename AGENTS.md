@@ -10,4 +10,6 @@ Use the project directory as the working directory. Keep the browser renderer ho
 
 For older or non-technical users, keep the interface direct and reassuring: large controls, plain wording, one obvious next step, high contrast, and clear feedback. Do not expose technical terms when ordinary language works.
 
+For video work, load `.hermes/skills/video-use/SKILL.md` and `.hermes/skills/branded-social-video/SKILL.md` in addition to the command-center skill. The bundled video setup intentionally does not require ElevenLabs; use the local ASR fallback when subtitles are needed and never fabricate captions.
+
 Preserve original source files. Generated video work belongs in an `edit/` directory. Never commit credentials, OAuth tokens, API keys, session databases, or personal Hermes state.

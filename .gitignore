@@ -44,6 +44,10 @@ tools/*.zip
 Thumbs.db
 Desktop.ini
 
+# Generated Python/cache files
+__pycache__/
+*.py[cod]
+
 # Temporary files
 *.tmp
 *.temp
